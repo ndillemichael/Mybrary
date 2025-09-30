@@ -7,6 +7,7 @@ const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const indexRouter = require("./routes/index");
 const authorRouter = require("./routes/authors");
+const bookRouter = require("./routes/books");
 const bodyParser = require("body-parser");
 
 app.set("view engine", "ejs");
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 
 app.use("/", indexRouter);
 app.use("/authors", authorRouter);
+app.use("/books", bookRouter);
 
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL);
